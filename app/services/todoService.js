@@ -13,6 +13,7 @@ function todoService(Db) {
 }
 
 todoService.prototype.getTodos = function getTodos() {
+    result = [];
     var dbClient = db.initDb();
     var queryPrepared = 'SELECT * FROM todos';
     var sqlQuery = dbClient.query(queryPrepared, function select(error, results, fields) {
@@ -45,9 +46,10 @@ todoService.prototype.getTodos = function getTodos() {
 };
 
 todoService.prototype.getOneTodo = function getOneTodo(id) {
+    result = [];
     var dbClient = db.initDb();
     var queryPrepared = 'SELECT * FROM todos WHERE id = ?';
-    dbClient.query(queryPrepared, [id], function select(error, results, fields) {
+    dbClient.query(queryPrepared, [id], function select(error, results) {
         if (error) {
             console.log(error);
             dbClient.end();
@@ -98,7 +100,7 @@ todoService.prototype.putOneTodo = function putOneTodo(todo) {
 
     try {
 
-        dbClient.query(queryPrepared, [todo.description,todo.assignee,todo.taskstatus,todo.menuItem,todo.taskName], function select(error, results, fields) {
+        dbClient.query(queryPrepared, [todo.description, todo.assignee, todo.taskstatus, todo.menuItem, todo.taskName], function select(error, results, fields) {
             if (error) throw error;
             result = results;
             //else results.send('success');
@@ -136,7 +138,7 @@ todoService.prototype.deleteOneTodo = function deleteOneTodo(id) {
             throw error;
         }
         result = results;
-        console.log('client removed successfully')
+        console.log('client removed successfully');
 
         //else results.send('success');
         dbClient.end();

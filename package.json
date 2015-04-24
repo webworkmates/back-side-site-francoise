@@ -34,6 +34,7 @@
     "hapi": "^8.4.0",
     "hapi-swaggered": "^2.0.0-alpha.4",
     "hapi-swaggered-ui": "^1.2.3",
+    "joi": "^6.3.0",
     "mysql": "^2.6.2",
     "nconf": "^0.7.1",
     "q": "^1.2.0"
