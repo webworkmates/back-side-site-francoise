@@ -8,7 +8,7 @@ var GetHandler = require('../handlers/GetHandler');
 var PostHandler = require('../handlers/PostHandler');
 var PutHandler = require('../handlers/PutHandler');
 var DeleteHandler = require('../handlers/DeleteHandler');
-
+var menuRoutes = require('./menuRoutes');
 function routes(server) {
     if (!(this instanceof routes)) {
         return new routes(server);
@@ -21,6 +21,7 @@ routes.prototype.loadAPIRoutes = function (apiVersion) {
     var getHandler = new GetHandler(this.server);
     var putHandler = new PutHandler(this.server);
     var deleteHandler = new DeleteHandler(this.server);
+    var menuroutes = new menuRoutes(this.server);
 
     this.server.route([
         {
@@ -144,6 +145,7 @@ routes.prototype.loadAPIRoutes = function (apiVersion) {
             }
         }
     ]);
+    menuroutes.loadMenuRoutes();
 };
 
 module.exports = routes;
