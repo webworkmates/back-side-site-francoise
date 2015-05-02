@@ -11,7 +11,7 @@ function GetHandler(server) {
     GetHandler.prototype.server = server;
 }
 GetHandler.prototype.getAll = function getAll(req, reply) {
-    var todoService = new MenuService();
+    var todoService = new TodoService();
     todoService.getTodos().then(function (data) {
         reply(data)
             .code(200)
