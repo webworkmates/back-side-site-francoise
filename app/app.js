@@ -23,33 +23,33 @@ server.init = function (conf) {
         labels: ['nodeRestApi']
     });
 
-    server.register({
-            register: hapiSwaggered,
-            options: {
-                descriptions: {
-                    'API': 'Francoise\'s website api reference'
-                },
-                info: {
-                    title: 'Francoise\'s website api reference',
-                    description: 'Documentation for the Francoise\'s website Api reference.',
-                    version: conf.get('nodeRestApi:apiVersion') + ''
-                }
-            }
-        },
-        {
-            select: 'nodeRestApi',
-            routes: {
-                prefix: '/swagger'
-            }
-        },
-        function (err) {
-            if (err) {
-                server.logger.error('hapi-swaggered load error: ' + err);
-            } else {
-                server.logger.info('hapi-swaggered interface loaded');
-            }
-        }
-    );
+    //server.register({
+    //        register: hapiSwaggered,
+    //        options: {
+    //            descriptions: {
+    //                'API': 'Francoise\'s website api reference'
+    //            },
+    //            info: {
+    //                title: 'Francoise\'s website api reference',
+    //                description: 'Documentation for the Francoise\'s website Api reference.',
+    //                version: conf.get('nodeRestApi:apiVersion') + ''
+    //            }
+    //        }
+    //    },
+    //    {
+    //        select: 'nodeRestApi',
+    //        routes: {
+    //            prefix: '/swagger'
+    //        }
+    //    },
+    //    function (err) {
+    //        if (err) {
+    //            server.logger.error('hapi-swaggered load error: ' + err);
+    //        } else {
+    //            server.logger.info('hapi-swaggered interface loaded');
+    //        }
+    //    }
+    //);
 
     server.register({
         register: hapiSwaggeredUi,
